@@ -4,6 +4,7 @@ import '../models/question_model.dart';
 import '../widgets/question_widget.dart';
 import '../widgets/next_button.dart';
 import '../widgets/option_card.dart';
+import '../widgets/result_box.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,35 +17,110 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Question> _questions = [
     Question(
       id: '10',
-      title: 'what is 2+2 ?',
+      title: ' What is 2 + 2 ?',
       options: {'5': false, '30': false, '4': true, '10': false},
     ),
     Question(
       id: '11',
-      title: 'what is 10+20 ?',
+      title: ' What is 10 + 20 ?',
+      options: {'50': false, '30': true, '40': false, '10': false},
+    ),
+     Question(
+      id: '12',
+      title: ' What is 2 + 2 ?',
+      options: {'5': false, '30': false, '4': true, '10': false},
+    ),
+    Question(
+      id: '13',
+      title: ' What is 10 + 20 ?',
+      options: {'50': false, '30': true, '40': false, '10': false},
+    ),
+     Question(
+      id: '14',
+      title: ' What is 2 + 2 ?',
+      options: {'5': false, '30': false, '4': true, '10': false},
+    ),
+    Question(
+      id: '15',
+      title: ' What is 10 + 20 ?',
+      options: {'50': false, '30': true, '40': false, '10': false},
+    ),
+     Question(
+      id: '16',
+      title: ' What is 2 + 2 ?',
+      options: {'5': false, '30': false, '4': true, '10': false},
+    ),
+    Question(
+      id: '17',
+      title: ' What is 10 + 20 ?',
+      options: {'50': false, '30': true, '40': false, '10': false},
+    ),
+     Question(
+      id: '18',
+      title: ' What is 2 + 2 ?',
+      options: {'5': false, '30': false, '4': true, '10': false},
+    ),
+    Question(
+      id: '19',
+      title: ' What is 10 + 20 ?',
       options: {'50': false, '30': true, '40': false, '10': false},
     )
   ];
 
   int index = 0;
   bool isPressed = false;
+  int score = 0;
+  bool isAlreadySelected = false;
 
   void nextQuestion() {
     if (index == _questions.length - 1) {
+      showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (ctx) => ResultBox(
+                result: score,
+                questionLength: _questions.length,
+                onPressed: startOver,
+              ));
+    } else {
+      if (isPressed) {
+        setState(() {
+          index++;
+          isPressed = false;
+          isAlreadySelected = false;
+        });
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Please select an option!'),
+          behavior: SnackBarBehavior.floating,
+          margin: EdgeInsets.symmetric(vertical: 20.0),
+        ));
+      }
+    }
+  }
+
+  void checkAnswerAndUpdate(bool value) {
+    if (isAlreadySelected) {
       return;
     } else {
+      if (value == true) {
+        score++;
+      }
       setState(() {
-        index++;
-
-        isPressed = false;
+        isPressed = true;
+        isAlreadySelected = true;
       });
     }
   }
 
-  void changeColor() {
+  void startOver() {
     setState(() {
-      isPressed = true;
+      index = 0;
+      score = 0;
+      isPressed = false;
+      isAlreadySelected = false;
     });
+    Navigator.pop(context);
   }
 
   @override
@@ -56,6 +132,15 @@ class _HomeScreenState extends State<HomeScreen> {
         foregroundColor: const Color(0xFFE7E7E7),
         backgroundColor: background,
         shadowColor: Colors.transparent,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Text(
+              'Score: $score',
+              style: const TextStyle(fontSize: 18.0),
+            ),
+          ),
+        ],
       ),
       body: Container(
         width: double.infinity,
@@ -69,14 +154,17 @@ class _HomeScreenState extends State<HomeScreen> {
             const Divider(color: neutral),
             const SizedBox(height: 25.0),
             for (int i = 0; i < _questions[index].options.length; i++)
-              OptionCard(
-                option: _questions[index].options.keys.toList()[i],
-                color: isPressed
-                    ? _questions[index].options.values.toList()[i] == true
-                        ? correct
-                        : incorrect
-                    : neutral,
-                onTap: changeColor,
+              GestureDetector(
+                onTap: () => checkAnswerAndUpdate(
+                    _questions[index].options.values.toList()[i]),
+                child: OptionCard(
+                  option: _questions[index].options.keys.toList()[i],
+                  color: isPressed
+                      ? _questions[index].options.values.toList()[i] == true
+                          ? correct
+                          : incorrect
+                      : neutral,
+                ),
               ),
           ],
         ),
