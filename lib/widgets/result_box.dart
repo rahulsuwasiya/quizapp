@@ -55,7 +55,7 @@ class ResultBox extends StatelessWidget {
               child: const Text(
                 'Start Over',
                 style: TextStyle(
-                  color: Colors.blue,
+                  color: correct,
                   fontSize: 20.0,
                   letterSpacing: 1.0,
                 ),

@@ -17,53 +17,96 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Question> _questions = [
     Question(
       id: '10',
-      title: ' What is 2 + 2 ?',
-      options: {'5': false, '30': false, '4': true, '10': false},
+      title: '\nSCD, TEF, UGH, ____, WK',
+      options: {'CMN': false, 'UJI': false, 'VIJ': true, 'IJT': false},
     ),
     Question(
       id: '11',
-      title: ' What is 10 + 20 ?',
-      options: {'50': false, '30': true, '40': false, '10': false},
+      title:
+          '\nWhich of the following term is used for a function defined inside a class?',
+      options: {
+        'Member Variable': false,
+        'Member function': true,
+        'Class function': false,
+        'Classic function': false
+      },
     ),
-     Question(
+    Question(
       id: '12',
-      title: ' What is 2 + 2 ?',
-      options: {'5': false, '30': false, '4': true, '10': false},
+      title:
+          '\nIf A is the brother of B; B is the sister of C; and C is the father of D, how D is related to A?',
+      options: {
+        'Brother': false,
+        'Sister': false,
+        'Nephew/Niece': true,
+        'Cannot be determined': false
+      },
     ),
     Question(
       id: '13',
-      title: ' What is 10 + 20 ?',
-      options: {'50': false, '30': true, '40': false, '10': false},
+      title: '\nPeacock : India :: Bear : ?',
+      options: {
+        'Australia': false,
+        'Russia': true,
+        'America': false,
+        'England': false
+      },
     ),
-     Question(
+    Question(
       id: '14',
-      title: ' What is 2 + 2 ?',
-      options: {'5': false, '30': false, '4': true, '10': false},
+      title: '\nSynonym of COMMENSURATE',
+      options: {
+        'Measurable': false,
+        'Begining': false,
+        'Proportionate': true,
+        'Appropriate': false
+      },
     ),
     Question(
       id: '15',
-      title: ' What is 10 + 20 ?',
-      options: {'50': false, '30': true, '40': false, '10': false},
+      title: '\nGod is ......',
+      options: {
+        'Graceful': false,
+        'Gracious': true,
+        'Grateful': false,
+        'Greatful': false
+      },
     ),
-     Question(
+    Question(
       id: '16',
-      title: ' What is 2 + 2 ?',
-      options: {'5': false, '30': false, '4': true, '10': false},
+      title: '\nFind the correctly spelt word.',
+      options: {
+        'Exterminatte': false,
+        'Inexpliccable': false,
+        'Offspring': true,
+        'Reffere': false
+      },
     ),
     Question(
       id: '17',
-      title: ' What is 10 + 20 ?',
-      options: {'50': false, '30': true, '40': false, '10': false},
+      title: '\nAntonym of MINOR',
+      options: {'Big': false, 'Major': true, 'Tall': false, 'Heavy': false},
     ),
-     Question(
+    Question(
       id: '18',
-      title: ' What is 2 + 2 ?',
-      options: {'5': false, '30': false, '4': true, '10': false},
+      title: '\nOne word substitution for: That which cannot be believed',
+      options: {
+        'Unreliable': false,
+        'Implausible': false,
+        'Incredible': true,
+        'Incredulous': false
+      },
     ),
     Question(
       id: '19',
-      title: ' What is 10 + 20 ?',
-      options: {'50': false, '30': true, '40': false, '10': false},
+      title:
+          '\nChoose the correct meaning of proverb/idiom: To hit the nail right on the head',
+      options: {
+        'To announce one\'s fixed views': false,
+        'To do the right thing': true,
+        'To destroy one\'s reputation': false,
+        'To teach someone a lesson': false
+      },
     )
   ];
 
